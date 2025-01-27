@@ -1,0 +1,1846 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={STAT 847: Final Project},
+  pdfauthor={Matthew Badal-Badalian},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{STAT 847: Final Project}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{DUE: Friday April 19, 2024 by 11:59pm Eastern}
+\author{Matthew Badal-Badalian}
+\date{ID: 20777980}
+
+\begin{document}
+\maketitle
+
+The following dataset was pulled using the NBA Stats API and uploaded to
+Kaggle by Justinas Cirtautas, a Data Scientist residing in London,
+England. It contains demographic, biographical and box score details
+about all NBA players under guarantee contracts, from the 1996 to the
+2022 season. Please note that the original dataset contained an
+additional 52 rows with missing data that was ultimately cleaned before
+being uploaded to Kaggle. The new dataset is saved as all\_seasons.csv,
+containing 12843 rows (excluding the headers for variable/column names)
+and 22 columns of information. The variables from the dataset are found
+as follows:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7778}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+See: &
+\url{https://www.kaggle.com/datasets/justinas/nba-players-data} \\
+index & Data record number \\
+player\_name & Name of player \\
+team\_abbreviation & Abbreviation code of team player played for at end
+of season \\
+age & Age of player \\
+player\_height & Height of player in cm \\
+player\_weight & Weight of player in kg \\
+college & College attended by player \\
+country & Country player was born in \\
+draft\_year & Year player was drafted \\
+draft\_round & Draft round player was picked \\
+draft\_number & Number player was picked within his draft round \\
+gp & Number of games played through season \\
+pts & Average number of points scored per game \\
+reb & Average number of rebounds scored per game \\
+ast & Average number of assists distributed per game \\
+net\_rating & Team point differential per 100 poss. with player on
+court \\
+oreb\_pct & \% of available offensive rebounds grabbed by player on
+court \\
+dreb\_pct & \% of available defensive rebounds grabbed by player on
+court \\
+usg\_pct & \% of team plays used by player on court \\
+ts\_pct & Player's shooting metric based on free throws, 2 \& 3 pt
+shots \\
+ast\_pct & \% of teammate field goals player assisted while on court \\
+season & NBA season data record belongs to \\
+\end{longtable}
+
+Below are formulas associated with the calculation of certain variables,
+according to the author who curated the dataset:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7778}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Formula
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+usg\_pct & (FGA + Possession Ending FTA + TO)/POSS \\
+ts\_pct & PTS/(2(FGA + 0.44*FTA) \\
+\end{longtable}
+
+\vspace{2cm}
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  \textbf{MUST BE INCLUDED} Describe and justify two different topics or
+  approaches you might want to consider for this dataset and task. You
+  don't have to use these tasks in the actual analysis.
+\end{enumerate}
+
+\hypertarget{topic-1-relationship-between-physical-attributes-and-performance-indicators}{%
+\subsubsection{\texorpdfstring{\textbf{Topic 1: Relationship Between
+Physical Attributes and Performance
+Indicators}}{Topic 1: Relationship Between Physical Attributes and Performance Indicators}}\label{topic-1-relationship-between-physical-attributes-and-performance-indicators}}
+
+The first objective is to determine the relationship between players'
+physical attributes and their performance indicators (i.e.~whether the
+number of rebounds grabbed increases for taller players, if the usage
+rate is impacted by age, etc). The physical variables used are age,
+player\_height, and player\_weight, while the performance variables
+include: pts, reb, ast, net\_rating, oreb\_pct, dreb\_pct, usg\_pct,
+ts\_pct, and ast\_pct.
+
+The initial step involves extracting and inspecting all data rows within
+these specified columns to ensure no data is missing. A correlation
+coefficient of -1 signifies a perfect negative linear relationship,
+whereas 0 indicates no linear relationship, and 1 indicates a perfect
+positive linear relationship. Furthermore, a heat map is created to
+easily visualize the matrix.
+
+The top three performance attributes that exhibit for strongest positive
+or negative correlation are then identified for each physical attribute.
+Nine scatter plots are then plotted to visualize the relationship
+between each physical-performance trait pair to understand the specific
+trend between them in further detail. Finally depending on the findings,
+the analysis may be refined by removing outliers associated with certain
+physical traits and repeating the process. This systematic approach
+provides insights into how players' physical attributes influence their
+on-court performance, aiding in player assessment and strategic
+decision-making for coaching staffs.
+
+\hypertarget{topic-2-examining-how-college-background-influences-nba-success}{%
+\subsubsection{\texorpdfstring{\textbf{Topic 2: Examining How College
+Background Influences NBA
+Success}}{Topic 2: Examining How College Background Influences NBA Success}}\label{topic-2-examining-how-college-background-influences-nba-success}}
+
+The second topic delves into examining how college background influences
+NBA success. The variables extracted for the analysis include
+player\_name, college, gp, pts, reb, ast, usg\_pct, and ts\_pct. After
+ensuring that there is no missing data, career statistics are calculated
+for each player. First, the data is modified to additionally contain
+season\_total\_pts, season\_total\_pts, season\_total\_pts, where
+season\_total\_ denotes the original metric multiplied by the number of
+games played for the season. Afterwards, the dataset is grouped by
+player\_name to create a new data frame,
+all\_players\_career\_stats\_DF, which contains player names
+(player\_name), their college of origin (college), and NBA career
+statistics (total\_gp, avg\_pts, avg\_reb, avg\_ast, avg\_usg\_pct, and
+avg\_ts\_pct). An important distinction is that avg\_pts, avg\_reb and
+avg\_ast are calculated on a per game basis whereas avg\_usg\_pct and
+avg\_ts\_pct are calculated on a per season basis.
+
+Following this, all\_players\_career\_stats\_DF is further grouped by
+college, with an additional variable num\_players, tracking the number
+of players drafted from each college. Rows associated with colleges
+meeting a specified threshold (i.e.~50 players) are filtered out and
+stored in a new data frame
+all\_players\_career\_stats\_above\_threshold\_DF.
+
+From all\_players\_career\_stats\_above\_threshold\_DF, a new dictionary
+all\_players\_career\_stats\_summary\_DICT is created. This contains
+five data frames, each listing colleges alongside summary statistics
+(min, mean, max, std, q25, median, and q75) for specific performance
+traits: avg\_pts, avg\_reb, avg\_ast, avg\_usg\_pct, and avg\_ts\_pct.
+For example, the data frame avg\_pts\_summary\_DF contains the columns
+college, min\_avg\_pts, mean\_avg\_pts, max\_avg\_pts, std\_avg\_pts,
+q25\_avg\_pts, median\_avg\_pts, and q25\_avg\_pts. Each data frame also
+includes a row representing summary statistics for all player career
+averages from all\_players\_career\_stats\_DF, as opposed to the summary
+statistics within individual colleges. Tables are then produced for each
+data frame to display the summary statistics.
+
+Finally, histograms and box plots are generated for each of the five
+performance traits: avg\_pts, avg\_reb, avg\_ast, avg\_usg\_pct, and
+avg\_ts\_pct---using data from all\_players\_career\_stats\_DF, to
+visually represent the distribution of NBA career statistics. These
+visualizations can also be produced for colleges of interest. These
+tables and plots facilitate the identification of colleges that
+consistently produce higher-quality NBA players, which could be
+invaluable during recruiting sessions. Additionally, further research
+could explore the variance in coaching styles across colleges of
+different quality levels.
+
+\vspace{2cm}
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{MUST BE INCLUDED} Give a ggpairs plot of what you think are
+  the six most important variables. At least one must be categorical,
+  and one continuous. Explain your choice of variables and the trends
+  between them.
+\end{enumerate}
+
+The objective of this task is to identify trends in NBA player
+performance. Among the list of potential variables, the five continuous
+variables: usg\_pct, pts, reb, ast, and age stand out. The usage rate,
+or usage percentage (usg\_pct) is an important metric that denotes the
+percentage of team possessions utilized by a player while on the court,
+reflecting the team's reliance on the player to generate offence.
+
+Points (pts), rebounds (reb), and assists (ast) are the primary
+statistics that draw the most attention from NBA fans. The number of
+points scored directly influences the outcome of a game, as the team
+with the higher score wins. It is also a direct measure of a player's
+scoring ability.
+
+A rebound occurs when a player secures the basketball after any missed
+shot attempt, including free throws and field goals. It often reflects a
+player's positioning and athleticism. Grabbing offensive rebounds gives
+a team extra chances to score. Offensive rebounds provide additional
+scoring opportunities for the team, while defensive rebounds limit the
+opponent's chances and enable transition play for the defending team.
+
+An assist refers to a pass that directly leads to a made basket by a
+teammate. Good ball movement and passing improve a team's field goal
+percentage by creating more open-shot opportunities. Assists often
+showcase a player's court vision, playmaking skills, and willingness to
+involve teammates.
+
+Age was selected as the final continuous variable because it can
+influence a player's performance level, durability and basketball
+intelligence. Younger players often exhibit greater growth potential,
+players in their prime typically deliver peak performance, and older
+players with experience excel at making strategic plays.
+
+Finally, the round and position that a player is drafted can
+significantly influence their NBA career trajectory, opportunities and
+expectations. Players selected earlier in drafts are generally viewed as
+more impactful additions to their teams, being perceived as possessing
+greater skill and promise by NBA teams and scouts.
+
+The draft\_round and draft\_number columns underwent analysis and
+transformation to create a new variable named modern\_draft\_round,
+which was selected as the categorical variable. This adjustment was made
+to make the analysis easier and align with the current NBA draft format,
+where picks 1 to 30 are designated as first-round players, picks 31 to
+60 as second-round players and any remaining picks are categorized as
+undrafted players.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all\_seasons\_original\_DF }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"all\_seasons.csv"}\NormalTok{)}
+
+\NormalTok{all\_seasons\_modified\_DF }\OtherTok{\textless{}{-}}\NormalTok{ all\_seasons\_original\_DF}
+
+\NormalTok{pick\_to\_modern\_round\_number\_DICT }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \StringTok{\textasciigrave{}}\AttributeTok{Round 1}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.character}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{30}\NormalTok{),}
+  \StringTok{\textasciigrave{}}\AttributeTok{Round 2}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.character}\NormalTok{(}\DecValTok{31}\SpecialCharTok{:}\DecValTok{60}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{ConvertToModernDraftRound }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(draft\_number) \{}
+  \ControlFlowTok{for}\NormalTok{ (modern\_draft\_round }\ControlFlowTok{in} \FunctionTok{names}\NormalTok{(pick\_to\_modern\_round\_number\_DICT)) \{}
+    \ControlFlowTok{if}\NormalTok{ (draft\_number }\SpecialCharTok{\%in\%}\NormalTok{ pick\_to\_modern\_round\_number\_DICT[[modern\_draft\_round]]) \{}
+      \FunctionTok{return}\NormalTok{(modern\_draft\_round)}
+\NormalTok{    \} }
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(}\StringTok{"Undrafted"}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{modern\_draft\_round }\OtherTok{\textless{}{-}} 
+  \FunctionTok{sapply}\NormalTok{(all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{draft\_number,ConvertToModernDraftRound)}
+
+\FunctionTok{write.csv}\NormalTok{(all\_seasons\_modified\_DF, }
+          \StringTok{"Created\_Data/all\_seasons\_modified.csv"}\NormalTok{,}\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(GGally)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'GGally' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'GGally':
+##   method from   
+##   +.gg   ggplot2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{column\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"modern\_draft\_round"}\NormalTok{,}\StringTok{"age"}\NormalTok{,}\StringTok{"usg\_pct"}\NormalTok{,}\StringTok{"pts"}\NormalTok{,}\StringTok{"reb"}\NormalTok{,}\StringTok{"ast"}\NormalTok{)}
+\NormalTok{ggpairs\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggpairs}\NormalTok{(all\_seasons\_modified\_DF, }
+  \AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ modern\_draft\_round),}
+  \AttributeTok{columns =}\NormalTok{ column\_list,}
+  \AttributeTok{columnLabels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Draft Round"}\NormalTok{,}\StringTok{"Age"}\NormalTok{,}\StringTok{"Usage \%"}\NormalTok{,}\StringTok{"Points"}\NormalTok{,}\StringTok{"Rebounds"}\NormalTok{,}\StringTok{"Assists"}\NormalTok{),}
+  \AttributeTok{lower =} \FunctionTok{list}\NormalTok{(}\AttributeTok{continuous =} \FunctionTok{wrap}\NormalTok{(}\StringTok{"points"}\NormalTok{,}\AttributeTok{size =} \FloatTok{0.5}\NormalTok{),}
+               \AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ modern\_draft\_round)),}
+  \AttributeTok{upper =} \FunctionTok{list}\NormalTok{(}\AttributeTok{continuous =} \FunctionTok{wrap}\NormalTok{(}\StringTok{"cor"}\NormalTok{,}\AttributeTok{size =} \FloatTok{2.5}\NormalTok{)))}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(column\_list)) \{}
+\NormalTok{  ggpairs\_plot[i, i] }\OtherTok{\textless{}{-}}\NormalTok{ ggpairs\_plot[i,i] }\SpecialCharTok{+} 
+  \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ modern\_draft\_round, }\AttributeTok{alpha =} \FloatTok{0.75}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{new\_ggpairs\_plot }\OtherTok{\textless{}{-}}\NormalTok{ ggpairs\_plot }\SpecialCharTok{+} \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{),}\AttributeTok{strip.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{7}\NormalTok{))}
+
+\NormalTok{new\_ggpairs\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{STAT847_W24_Final_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+Several trends are revealed from the ggpairs plot. Firstly, the top left
+corner plot shows that the dataset includes over 7500 first-round
+players, nearly 3000 second-round players, and close to 2500 undrafted
+players, based on the modern NBA draft structure.
+
+Examining the histograms, the distribution of categorical variable
+values (i.e.~age) exhibits a similar shape across first-round,
+second-round, and undrafted players, with slight variations in width and
+center. Predictably, first-round players show a higher frequency of
+values due to their larger representation in the dataset.
+
+The slight changes in width and center from the histograms become more
+apparent through the boxplots. Median values are notably higher for
+first-round players and lower for undrafted players, with a decreasing
+interquartile range from first-round to undrafted players. Outliers are
+more prevalent among first-round players, aligning with the expectation
+of superior performance. However, the performance gap appears narrower
+between second-round and undrafted players. The increased age values
+among first-round players likely reflect longer NBA careers resulting
+from their success.
+
+The diagonal density plots reveal a broader distribution of each given
+continuous variable for first-round players, suggesting a wider standard
+deviation. This makes sense, as most of the greatest NBA players were
+drafted in the first round, while some did not achieve significant
+success in their careers. Conversely, density curves for undrafted
+players have higher peaks, indicating greater concentration in the data
+around mean values.
+
+One way to classify correlation value between two variables (typically
+noted as \emph{r}) is to denote values of ±0 to ±0.2 as very weak, ±0.2
+to ±0.4 as weak, ±0.4 to ±0.6 indicate as moderate, ±0.6 to ±0.8 as
+strong, and values of ±0.8 to ±1.0 as very strong. The sign of \emph{r}
+determines whether the relationship between the two variables is
+positive or negative. A correlation of 0 signifies no relationship,
+while ±1.0 shows a perfect linear relationship between the two
+variables.
+
+The relationship between age and other continuous attributes is observed
+as very weak, with correlation values falling mostly between -0.2 and
+0.2. On the other hand, the usage rate exhibits a strong positive
+correlation with points scored by first-round players and a moderate
+positive correlation with points scored by second-round players and
+assists from first-round players. However, other combinations involving
+usage rates display weak or very weak correlations.
+
+Moreover, there is a strong positive correlation between points scored
+and assists generated for all player types, and between points and
+rebounds for second-round players. In addition, a moderate positive
+correlation between points and rebounds for first-round and undrafted
+players. This is to be expected; players who score frequently tend to
+receive more playing time, which creates more opportunities to grab
+boards and generate more passes. Furthermore, there is a weak or very
+weak correlation between the number of rebounds and assists generated
+across all player types. Overall, these correlation observations align
+well with the scatter plot observations data.
+
+\vspace{2cm}
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{MUST BE INCLUDED} Build a classification tree of one of the
+  six variables from the last part as a function of the other five, and
+  any other explanatory variables you think are necessary. Show code,
+  explain reasoning, and show the tree as a simple (ugly) plot. Show the
+  confusion matrix. Give two example predictions and follow them down
+  the tree.
+\end{enumerate}
+
+The modern\_draft\_round variable is selected as the target variable in
+this analysis, as it is the only categorical variable among the six
+variables considered in the previous question. When building a
+classification tree, additional seasonal statistics were incorporated as
+explanatory variables to assess potential improvements in accuracy.
+Surely enough, adding gp enhances the model's performance. This finding
+aligns intuitively with the notion that second-round and undrafted
+players typically receive fewer playing opportunities, particularly if
+their performance is subpar.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rpart)}
+\FunctionTok{library}\NormalTok{(rpart.plot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'rpart.plot' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{seasonal\_data\_column\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"modern\_draft\_round"}\NormalTok{,}\StringTok{"age"}\NormalTok{,}\StringTok{"usg\_pct"}\NormalTok{,}\StringTok{"pts"}\NormalTok{,}\StringTok{"reb"}\NormalTok{,}\StringTok{"ast"}\NormalTok{,}\StringTok{"gp"}\NormalTok{)}
+\NormalTok{seasonal\_data\_classification\_tree\_model }\OtherTok{\textless{}{-}} \FunctionTok{rpart}\NormalTok{(modern\_draft\_round }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{method =} \StringTok{"class"}\NormalTok{, }
+                                   \AttributeTok{data =}\NormalTok{ all\_seasons\_modified\_DF[column\_list])}
+\FunctionTok{rpart.plot}\NormalTok{(seasonal\_data\_classification\_tree\_model, }
+           \AttributeTok{main =} \StringTok{"Predicting Draft Round Number Using Seasonal Data"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT847_W24_Final_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+The observation point begins at the root of the classification tree and
+proceeds along a defined path, guided by decision criteria encountered
+at each branch split. Upon reaching a leaf node, the observation is
+classified into the majority class (or highest probable category. The
+class distribution is represented as the three decimal numbers within
+each node.
+
+At the root node, these values describe the dataset's overall category
+distribution: 59\% first-round, 22\% second-round, and 19\% undrafted.
+The percentages displayed at the bottom of nodes indicate the portion of
+observations which reach that node. When examining the distribution of
+classes within each node, this classification tree does not seem as
+accurate as desired. Notably, the model only assigns 2\% of observations
+to the second-round class and 10\% to the undrafted class, significantly
+diverging from the dataset's actual class distribution.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{seasonal\_data\_classification\_tree\_model\_predictions }\OtherTok{\textless{}{-}} 
+  \FunctionTok{predict}\NormalTok{(seasonal\_data\_classification\_tree\_model, }
+\NormalTok{  all\_seasons\_modified\_DF[seasonal\_data\_column\_list],}\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+
+\NormalTok{seasonal\_data\_confusion\_matrix }\OtherTok{\textless{}{-}} 
+  \FunctionTok{table}\NormalTok{(}\AttributeTok{Prediction =}\NormalTok{ seasonal\_data\_classification\_tree\_model\_predictions, }
+  \AttributeTok{Truth =}\NormalTok{ all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{modern\_draft\_round)}
+
+\NormalTok{row\_labels }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(seasonal\_data\_confusion\_matrix)}
+\NormalTok{updated\_row\_labels }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(row\_labels,}\StringTok{"(Predictions)"}\NormalTok{,}\AttributeTok{sep =} \StringTok{" "}\NormalTok{)}
+\NormalTok{column\_labels }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(seasonal\_data\_confusion\_matrix)}
+\NormalTok{updated\_column\_labels }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(column\_labels,}\StringTok{"(Truth Values)"}\NormalTok{,}\AttributeTok{sep =} \StringTok{" "}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(seasonal\_data\_confusion\_matrix) }\OtherTok{\textless{}{-}}\NormalTok{ updated\_row\_labels}
+\FunctionTok{colnames}\NormalTok{(seasonal\_data\_confusion\_matrix) }\OtherTok{\textless{}{-}}\NormalTok{ updated\_column\_labels}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(seasonal\_data\_confusion\_matrix,}
+    \AttributeTok{caption =} \StringTok{"Confusion Matrix of Seasonal Data Classification Tree Model"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2526}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2421}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2421}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2632}}@{}}
+\caption{Confusion Matrix of Seasonal Data Classification Tree
+Model}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 1 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 2 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Undrafted (Truth Values)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 1 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 2 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Undrafted (Truth Values)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Round 1 (Predictions) & 7104 & 2351 & 1773 \\
+Round 2 (Predictions) & 98 & 126 & 54 \\
+Undrafted (Predictions) & 321 & 400 & 617 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CalculateAccuracies }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(confusion\_matrix,cat\_labels) \{}
+\NormalTok{  accuracies\_list }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\AttributeTok{length =} \FunctionTok{nrow}\NormalTok{(confusion\_matrix)}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(confusion\_matrix)) \{}
+\NormalTok{    true\_value }\OtherTok{\textless{}{-}}\NormalTok{ confusion\_matrix[i,i]}
+\NormalTok{    total\_value }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(confusion\_matrix[i,])}
+\NormalTok{    accuracies\_list[i] }\OtherTok{\textless{}{-}}\NormalTok{ true\_value}\SpecialCharTok{/}\NormalTok{total\_value}
+\NormalTok{  \}}
+\NormalTok{  num\_correct\_predictions }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{diag}\NormalTok{(confusion\_matrix))}
+\NormalTok{  num\_total\_predictions }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(confusion\_matrix)}
+\NormalTok{  accuracies\_list[}\FunctionTok{nrow}\NormalTok{(confusion\_matrix)}\SpecialCharTok{+}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} 
+\NormalTok{    num\_correct\_predictions}\SpecialCharTok{/}\NormalTok{num\_total\_predictions}
+  
+\NormalTok{  cat\_accuracy\_labels }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(cat\_labels,}\StringTok{"Overall"}\NormalTok{)}
+  
+\NormalTok{  accuracies\_DF }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(accuracies\_list)}
+  \FunctionTok{row.names}\NormalTok{(accuracies\_DF) }\OtherTok{\textless{}{-}}\NormalTok{ cat\_accuracy\_labels}
+  \FunctionTok{colnames}\NormalTok{(accuracies\_DF) }\OtherTok{\textless{}{-}} \StringTok{"Accuracy"}
+  
+  \FunctionTok{return}\NormalTok{(accuracies\_DF)}
+\NormalTok{\}}
+
+\NormalTok{cat\_labels }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Round 1"}\NormalTok{,}\StringTok{"Round 2"}\NormalTok{,}\StringTok{"Undrafted"}\NormalTok{)}
+\NormalTok{seasonal\_data\_accuracies\_DF }\OtherTok{\textless{}{-}} 
+  \FunctionTok{CalculateAccuracies}\NormalTok{(seasonal\_data\_confusion\_matrix,cat\_labels)}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(seasonal\_data\_accuracies\_DF,}\AttributeTok{caption =} 
+  \StringTok{"Seasonal Data Classification Tree Model Accuracies"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{Seasonal Data Classification Tree Model
+Accuracies}\tabularnewline
+\toprule\noalign{}
+& Accuracy \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Accuracy \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Round 1 & 0.6327040 \\
+Round 2 & 0.4532374 \\
+Undrafted & 0.4611360 \\
+Overall & 0.6109467 \\
+\end{longtable}
+
+The confusion matrix and accuracy table seem to confirm the suspicion,
+revealing that the model only correctly predicts approximately 45.32\%
+of second-round data and 46.11\% of undrafted data. It is important to
+note that the overall accuracy can be misleading, as it represents the
+ratio of correct predictions to total predictions without accounting for
+dataset distribution.
+
+As an attempt to improve the model accuracy, the dataset was transformed
+to hold the career averages of each NBA player. The variables of the
+transformed data all\_career\_stats\_DF can be explained below:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7778}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+player\_name & Name of player \\
+avg\_age\_in\_career & Average age of player through their career \\
+avg\_player\_height & Average height of player their career in cm \\
+avg\_player\_weight & Average weight of player their career in kg \\
+college & College attended by player \\
+country & Country player was born in \\
+draft\_year & Year player was drafted \\
+draft\_round & Draft round player was picked \\
+draft\_number & Number player was picked within his draft round \\
+total\_gp & Number of games played through career \\
+avg\_pts & Average number of points scored per game (career) \\
+avg\_reb & Average number of rebounds scored per game (career) \\
+avg\_ast & Average number of assists distributed per game (career) \\
+avg\_net\_rating & Team point differential per 100 poss. with player
+(career) \\
+avg\_oreb\_pct & \% of available offensive rebounds grabbed by player
+(career) \\
+avg\_dreb\_pct & \% of available defensive rebounds grabbed by player
+(career) \\
+avg\_usg\_pct & \% of team plays used by player on court (career) \\
+avg\_ts\_pct & Player's shooting metric (career) \\
+avg\_ast\_pct & \% of teammate field goals player assisted (career) \\
+modern\_draft\_round & Draft round player was picked based on modern
+format \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(plyr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:plyr':
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{temp\_all\_seasons\_modified\_DF }\OtherTok{\textless{}{-}}\NormalTok{ all\_seasons\_modified\_DF}
+\NormalTok{temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{season\_total\_pts }\OtherTok{\textless{}{-}} 
+\NormalTok{  temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{pts}\SpecialCharTok{*}\NormalTok{temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{gp}
+\NormalTok{temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{season\_total\_reb }\OtherTok{\textless{}{-}} 
+\NormalTok{  temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{reb}\SpecialCharTok{*}\NormalTok{temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{gp}
+\NormalTok{temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{season\_total\_ast }\OtherTok{\textless{}{-}} 
+\NormalTok{  temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{ast}\SpecialCharTok{*}\NormalTok{temp\_all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{gp}
+
+\NormalTok{temp\_all\_seasons\_modified\_GROUPED\_DF }\OtherTok{\textless{}{-}} \FunctionTok{group\_by}\NormalTok{(temp\_all\_seasons\_modified\_DF,player\_name)}
+
+\NormalTok{all\_career\_stats\_DF }\OtherTok{\textless{}{-}} \FunctionTok{ddply}\NormalTok{(temp\_all\_seasons\_modified\_DF,}\StringTok{"player\_name"}\NormalTok{,summarize,}
+  \AttributeTok{avg\_age\_in\_career =} \FunctionTok{mean}\NormalTok{(age,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_player\_height =} \FunctionTok{mean}\NormalTok{(player\_height,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_player\_weight =} \FunctionTok{mean}\NormalTok{(player\_weight,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{college   =} \FunctionTok{unique}\NormalTok{(college),}
+  \AttributeTok{country =} \FunctionTok{unique}\NormalTok{(country),}
+  \AttributeTok{draft\_year =} \FunctionTok{unique}\NormalTok{(draft\_year),}
+  \AttributeTok{draft\_round =} \FunctionTok{unique}\NormalTok{(draft\_round),}
+  \AttributeTok{draft\_number =} \FunctionTok{unique}\NormalTok{(draft\_number),}
+  \AttributeTok{total\_gp =} \FunctionTok{sum}\NormalTok{(gp,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_pts   =} \FunctionTok{sum}\NormalTok{(season\_total\_pts,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(gp,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_reb   =} \FunctionTok{sum}\NormalTok{(season\_total\_reb,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(gp,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_ast   =} \FunctionTok{sum}\NormalTok{(season\_total\_ast,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(gp,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_net\_rating =} \FunctionTok{mean}\NormalTok{(net\_rating,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_oreb\_pct =} \FunctionTok{mean}\NormalTok{(oreb\_pct,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_dreb\_pct =} \FunctionTok{mean}\NormalTok{(dreb\_pct,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_usg\_pct =} \FunctionTok{mean}\NormalTok{(usg\_pct,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_ts\_pct =} \FunctionTok{mean}\NormalTok{(ts\_pct,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{avg\_ast\_pct =} \FunctionTok{mean}\NormalTok{(ast\_pct,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{modern\_draft\_round =} \FunctionTok{unique}\NormalTok{(modern\_draft\_round))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
+## dplyr 1.1.0.
+## i Please use `reframe()` instead.
+## i When switching from `summarise()` to `reframe()`, remember that `reframe()`
+##   always returns an ungrouped data frame and adjust accordingly.
+## i The deprecated feature was likely used in the plyr package.
+##   Please report the issue at <https://github.com/hadley/plyr/issues>.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write.csv}\NormalTok{(all\_career\_stats\_DF,}
+          \StringTok{"Created\_Data/all\_career\_stats.csv"}\NormalTok{,}\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+A new classification tree is then created to predict the draft round in
+which player was selected.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{career\_data\_column\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"modern\_draft\_round"}\NormalTok{,}\StringTok{"avg\_age\_in\_career"}\NormalTok{,}
+                        \StringTok{"avg\_usg\_pct"}\NormalTok{,}\StringTok{"avg\_pts"}\NormalTok{,}\StringTok{"avg\_reb"}\NormalTok{,}\StringTok{"avg\_ast"}\NormalTok{,}\StringTok{"total\_gp"}\NormalTok{)}
+\NormalTok{career\_data\_classification\_tree\_model }\OtherTok{\textless{}{-}} \FunctionTok{rpart}\NormalTok{(modern\_draft\_round }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }
+              \AttributeTok{method =} \StringTok{"class"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ all\_career\_stats\_DF[career\_data\_column\_list])}
+\FunctionTok{rpart.plot}\NormalTok{(career\_data\_classification\_tree\_model, }
+           \AttributeTok{main =} \StringTok{"Predicting Draft Round Number Using Career Data"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT847_W24_Final_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+Transforming the NBA players' seasonal data into NBA players' career
+averages helps to balance the distribution of modern\_draft\_round more
+evenly: 41\% for first-round players, 27\% for second-round players, and
+32\% for undrafted players. This adjustment addresses the issue where
+first-round players disproportionately contained more data, due to their
+longer careers. Moreover, this updated model yields a more even
+prediction distribution: second-round outcomes occur 14\% of the time,
+and undrafted outcomes occur 31\% of the time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{career\_data\_classification\_tree\_model\_predictions }\OtherTok{\textless{}{-}} 
+  \FunctionTok{predict}\NormalTok{(career\_data\_classification\_tree\_model, }
+\NormalTok{              all\_career\_stats\_DF[career\_data\_column\_list],}\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+
+\NormalTok{career\_data\_confusion\_matrix }\OtherTok{\textless{}{-}} 
+  \FunctionTok{table}\NormalTok{(}\AttributeTok{Prediction =}\NormalTok{ career\_data\_classification\_tree\_model\_predictions, }
+  \AttributeTok{Truth =}\NormalTok{ all\_career\_stats\_DF}\SpecialCharTok{$}\NormalTok{modern\_draft\_round)}
+
+\NormalTok{row\_labels }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(career\_data\_confusion\_matrix)}
+\NormalTok{updated\_row\_labels }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(row\_labels,}\StringTok{"(Predictions)"}\NormalTok{,}\AttributeTok{sep =} \StringTok{" "}\NormalTok{)}
+\NormalTok{column\_labels }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(career\_data\_confusion\_matrix)}
+\NormalTok{updated\_column\_labels }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(column\_labels,}\StringTok{"(Truth Values)"}\NormalTok{,}\AttributeTok{sep =} \StringTok{" "}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(career\_data\_confusion\_matrix) }\OtherTok{\textless{}{-}}\NormalTok{ updated\_row\_labels}
+\FunctionTok{colnames}\NormalTok{(career\_data\_confusion\_matrix) }\OtherTok{\textless{}{-}}\NormalTok{ updated\_column\_labels}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(career\_data\_confusion\_matrix,}\AttributeTok{caption =} 
+               \StringTok{"Confusion Matrix of Career Data Classification Tree Model"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2526}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2421}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2421}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2632}}@{}}
+\caption{Confusion Matrix of Career Data Classification Tree
+Model}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 1 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 2 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Undrafted (Truth Values)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 1 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Round 2 (Truth Values)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Undrafted (Truth Values)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Round 1 (Predictions) & 924 & 304 & 233 \\
+Round 2 (Predictions) & 99 & 183 & 95 \\
+Undrafted (Predictions) & 79 & 225 & 541 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cat\_labels }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Round 1"}\NormalTok{,}\StringTok{"Round 2"}\NormalTok{,}\StringTok{"Undrafted"}\NormalTok{)}
+\NormalTok{career\_data\_accuracies\_DF }\OtherTok{\textless{}{-}} 
+  \FunctionTok{CalculateAccuracies}\NormalTok{(career\_data\_confusion\_matrix,cat\_labels)}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(career\_data\_accuracies\_DF,}\AttributeTok{caption =} 
+               \StringTok{"Career Data Classification Tree Model Accuracies"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{Career Data Classification Tree Model
+Accuracies}\tabularnewline
+\toprule\noalign{}
+& Accuracy \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Accuracy \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Round 1 & 0.6324435 \\
+Round 2 & 0.4854111 \\
+Undrafted & 0.6402367 \\
+Overall & 0.6142378 \\
+\end{longtable}
+
+In this case, the confusion matrix and accuracy table clearly show the
+improved performance of this model. Although the accuracy for predicting
+first-round player data slightly decreased from roughly 63.27\% to
+63.24\%, other categories saw an increase. The accuracy for second-round
+players increased from 45.32\% to 48.54\%, undrafted player accuracy
+surged from 46.11\% to 64.02\% and the overall accuracy climbed from
+61.09\% to 61.42\%.
+
+Let's take Example 1 as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{career\_data\_example\_1\_DF }\OtherTok{\textless{}{-}}\NormalTok{ all\_career\_stats\_DF[}\DecValTok{34}\NormalTok{,]}
+\NormalTok{career\_data\_example\_1\_prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(career\_data\_classification\_tree\_model,}
+\NormalTok{                career\_data\_example\_1\_DF[career\_data\_column\_list],}\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Example 1:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Example 1:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Input data:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Input data:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(career\_data\_example\_1\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(career\_data\_example\_1\_DF) }\SpecialCharTok{\%in\%} \StringTok{"modern\_draft\_round"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    player_name avg_age_in_career avg_player_height avg_player_weight college
+## 34  AJ Griffin                19            198.12          99.79024    Duke
+##    country draft_year draft_round draft_number total_gp avg_pts avg_reb avg_ast
+## 34     USA       2022           1           16       72     8.9     2.1       1
+##    avg_net_rating avg_oreb_pct avg_dreb_pct avg_usg_pct avg_ts_pct avg_ast_pct
+## 34            1.5        0.026         0.08       0.174      0.577        0.07
+\end{verbatim}
+
+Some key information about this player includes his 72 total games
+played, his average age throughout his career at 19, and his career
+average of 8.9 points scored per game.
+
+His path down the tree can be detailed as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  He fails the first decision node, requiring a minimum of 136 total
+  games played, and takes the right path.
+\item
+  He passes the second decision node, requiring a minimum of 22 total
+  games played, and takes the left path.
+\item
+  He passes the third decision node, requiring a maximum average age
+  through career of less than 22, and takes the left path.
+\item
+  He passes the fourth decision node, requiring a minimum career average
+  points per game of 7.5, and takes the left path.
+\item
+  He arrives at the leaf node that 1\% of the observations get to, and
+  his prediction is given as: Round 1.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Prediction:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Prediction:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(career\_data\_example\_1\_prediction))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Round 1   Round 2 Undrafted 
+##         1         0         0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Actual:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Actual:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(career\_data\_example\_1\_DF}\SpecialCharTok{$}\NormalTok{modern\_draft\_round,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Round 1
+\end{verbatim}
+
+Let's now take a look at Example 2:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{career\_data\_example\_2\_DF }\OtherTok{\textless{}{-}}\NormalTok{ all\_career\_stats\_DF[}\DecValTok{15}\NormalTok{,]}
+\NormalTok{career\_data\_example\_2\_prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(career\_data\_classification\_tree\_model,}
+\NormalTok{                career\_data\_example\_2\_DF[career\_data\_column\_list],}\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Example 2:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Example 2:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Input data:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Input data:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(career\_data\_example\_2\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(career\_data\_example\_2\_DF) }\SpecialCharTok{\%in\%} \StringTok{"modern\_draft\_round"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      player_name avg_age_in_career avg_player_height avg_player_weight  college
+## 15 Aaron Wiggins              23.5            194.31          86.18248 Maryland
+##    country draft_year draft_round draft_number total_gp avg_pts avg_reb avg_ast
+## 15     USA       2021           2           55      120   7.425    3.25   1.225
+##    avg_net_rating avg_oreb_pct avg_dreb_pct avg_usg_pct avg_ts_pct avg_ast_pct
+## 15           -3.3        0.045       0.1035       0.146     0.5815      0.0835
+\end{verbatim}
+
+Some key information about this player includes his 120 total games
+played, and his average age throughout his career at 23.5.
+
+His path down the tree can be detailed as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  He fails the first decision node, requiring a minimum of 136 total
+  games played, and takes the right path.
+\item
+  He passes the second decision node, requiring a minimum of 22 total
+  games played, and takes the left path.
+\item
+  He fails the third decision node, requiring a maximum average age
+  through career of less than 22, and takes the right path.
+\item
+  He fails the fourth decision node, requiring a minimum average age
+  through career of 32, and takes the right path.
+\item
+  He passes the fifth decision node, requiring a maximum average age
+  through career of less than 24, and takes the left path.
+\item
+  He arrives at the leaf node that 9\% of the observations get to, and
+  his prediction is given as: Round 2.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Prediction:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Prediction:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(career\_data\_example\_2\_prediction))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Round 1   Round 2 Undrafted 
+##         0         1         0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Actual:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Actual:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(career\_data\_example\_2\_DF}\SpecialCharTok{$}\NormalTok{modern\_draft\_round,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Round 2
+\end{verbatim}
+
+\vspace{2cm}
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \textbf{MUST BE INCLUDED} Build another model using one of the
+  continuous variables from your six most important. This time use your
+  model selection and dimension reduction tools, and include at least
+  one non-linear term.
+\end{enumerate}
+
+The modified seasonal dataset (all\_seasons\_modified\_DF) is used again
+for this task. The usage rate (usg\_pct) is selected as the response
+variable, while the other five variables used in the prior questions are
+selected as explanatory variables. Initially, the input and output data
+are extracted. Then, the categorical variable modern\_draft\_round
+undergoes one-hot encoding, separating into three variables: round\_1,
+round\_2, and undrafted. Each variable holds a value of 1 if the player
+was drafted in that specific round, and 0 otherwise.
+
+The squared terms are added to the input dataset for age, usg\_pct, pts,
+reb, and ast. The data is then fed into a best subset model to find the
+combination of variables that best explain the variation of the response
+variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(leaps)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'leaps' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{six\_most\_important\_variables\_list }\OtherTok{\textless{}{-}} 
+  \FunctionTok{c}\NormalTok{(}\StringTok{"modern\_draft\_round"}\NormalTok{,}\StringTok{"age"}\NormalTok{,}\StringTok{"usg\_pct"}\NormalTok{,}\StringTok{"pts"}\NormalTok{,}\StringTok{"reb"}\NormalTok{,}\StringTok{"ast"}\NormalTok{)}
+\NormalTok{output\_variable }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"usg\_pct"}\NormalTok{)}
+\NormalTok{input\_variables\_list }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(six\_most\_important\_variables\_list,output\_variable)}
+
+\NormalTok{model\_input\_data\_DF }\OtherTok{\textless{}{-}}\NormalTok{ all\_seasons\_modified\_DF[,input\_variables\_list]}
+
+\NormalTok{model\_input\_data\_DF }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(model\_input\_data\_DF,}
+      \AttributeTok{round\_1 =} \FunctionTok{ifelse}\NormalTok{(modern\_draft\_round }\SpecialCharTok{==} \StringTok{"Round 1"}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{),}
+      \AttributeTok{round\_2 =} \FunctionTok{ifelse}\NormalTok{(modern\_draft\_round }\SpecialCharTok{==} \StringTok{"Round 2"}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{),}
+      \AttributeTok{undrafted =} \FunctionTok{ifelse}\NormalTok{(modern\_draft\_round }\SpecialCharTok{==} \StringTok{"Undrafted"}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\NormalTok{model\_input\_data\_DF }\OtherTok{\textless{}{-}} 
+\NormalTok{  model\_input\_data\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(model\_input\_data\_DF) }\SpecialCharTok{\%in\%} \StringTok{"modern\_draft\_round"}\NormalTok{]}
+\NormalTok{model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{age\_squared }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{age}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{pts\_squared }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{pts}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{reb\_squared }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{reb}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{ast\_squared }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_DF}\SpecialCharTok{$}\NormalTok{ast}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\NormalTok{model\_data\_DF }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_DF}
+\NormalTok{model\_data\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct }\OtherTok{\textless{}{-}}\NormalTok{ all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct}
+
+\NormalTok{subset\_regression\_model }\OtherTok{\textless{}{-}} \FunctionTok{regsubsets}\NormalTok{(usg\_pct }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}\AttributeTok{data =}\NormalTok{ model\_data\_DF,}\AttributeTok{nbest =} \DecValTok{1}\NormalTok{,}
+\AttributeTok{really.big =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in leaps.setup(x, y, wt = wt, nbest = nbest, nvmax = nvmax, force.in =
+## force.in, : 1 linear dependencies found
+\end{verbatim}
+
+\begin{verbatim}
+## Reordering variables and trying again:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{subset\_regression\_model\_summary }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(subset\_regression\_model)}
+\NormalTok{best\_regression\_model\_index }\OtherTok{\textless{}{-}} \FunctionTok{which.max}\NormalTok{(subset\_regression\_model\_summary}\SpecialCharTok{$}\NormalTok{adjr2)}
+\NormalTok{best\_regression\_model\_coefficients }\OtherTok{\textless{}{-}} 
+  \FunctionTok{coef}\NormalTok{(subset\_regression\_model,best\_regression\_model\_index)}
+\NormalTok{best\_regression\_model\_coefficients }\OtherTok{\textless{}{-}}
+\NormalTok{  best\_regression\_model\_coefficients[best\_regression\_model\_coefficients }\SpecialCharTok{!=} \DecValTok{0}\NormalTok{]}
+\NormalTok{best\_regression\_model\_variables }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(best\_regression\_model\_coefficients)[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{best\_regression\_model\_adjusted\_r\_squared\_value }\OtherTok{\textless{}{-}}
+\NormalTok{subset\_regression\_model\_summary}\SpecialCharTok{$}\NormalTok{adjr2[best\_regression\_model\_index]}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Best model variables:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Best model variables:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(best\_regression\_model\_variables,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## age pts reb ast round_1 pts_squared reb_squared ast_squared undrafted
+\end{verbatim}
+
+The best model's variables: age, pts, reb, ast, round\_1, pts\_squared,
+reb\_squared, ast\_squared, and undrafted are then fed into a linear
+regression model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{best\_regression\_model\_variables\_and\_usg\_pct }\OtherTok{\textless{}{-}}
+  \FunctionTok{c}\NormalTok{(}\StringTok{"usg\_pct"}\NormalTok{,best\_regression\_model\_variables)}
+
+\NormalTok{best\_regression\_model\_variables\_and\_usg\_pct\_DF }\OtherTok{\textless{}{-}}
+\NormalTok{  model\_data\_DF[,best\_regression\_model\_variables\_and\_usg\_pct]}
+
+\NormalTok{best\_subset\_lm\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(usg\_pct }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}
+  \AttributeTok{data =}\NormalTok{ best\_regression\_model\_variables\_and\_usg\_pct\_DF)}
+
+\NormalTok{best\_subset\_lm\_model\_SUMMARY }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(best\_subset\_lm\_model)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Best Subset Model Summary"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Best Subset Model Summary
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(best\_subset\_lm\_model\_SUMMARY)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = usg_pct ~ ., data = best_regression_model_variables_and_usg_pct_DF)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.17577 -0.02194 -0.00231  0.01884  0.83093 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  1.958e-01  2.291e-03  85.467  < 2e-16 ***
+## age         -1.117e-03  7.726e-05 -14.453  < 2e-16 ***
+## pts          9.962e-03  2.506e-04  39.757  < 2e-16 ***
+## reb         -1.847e-02  5.030e-04 -36.728  < 2e-16 ***
+## ast         -1.153e-02  6.418e-04 -17.966  < 2e-16 ***
+## round_1      4.495e-03  8.590e-04   5.233 1.69e-07 ***
+## pts_squared -3.999e-05  8.282e-06  -4.829 1.39e-06 ***
+## reb_squared  1.029e-03  4.042e-05  25.468  < 2e-16 ***
+## ast_squared  9.598e-04  7.242e-05  13.254  < 2e-16 ***
+## undrafted   -9.890e-04  1.039e-03  -0.952    0.341    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.03745 on 12834 degrees of freedom
+## Multiple R-squared:  0.5112, Adjusted R-squared:  0.5108 
+## F-statistic:  1491 on 9 and 12834 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+From the model summary, it can be seen that the residual values (the
+difference between true and predicted values) vary from -0.17577 to
+0.83093, which suggests variability in the model's accuracy for
+different observations. However, the median difference is -0.00231. The
+coefficients for the linear regression model are shown in the Estimate
+column. Positive values signify a positive relationship with usg\_pct,
+whereas negative values indicate a negative relationship. The p values
+within the Pr(\textgreater\textbar t\textbar) column indicate that all
+coefficients for the variables are statistically significant, except for
+the undrafted coefficient which exceeds the commonly used threshold of
+0.05. The p-value associated with the F-statistic of 1491 indicates that
+the model's variables collectively describe the variance of
+modern\_draft\_round beyond random variance. To be more precise, the
+adjusted R-squared value of 0.5108 implies that roughly 51.08\% of the
+variance of usg\_pct is explained.
+
+Now let's examine the predicted outcomes of two examples:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_1\_DF }\OtherTok{\textless{}{-}}\NormalTok{ model\_data\_DF[}\DecValTok{1}\NormalTok{,]}
+\NormalTok{example\_1\_prediction }\OtherTok{\textless{}{-}} 
+  \FunctionTok{predict}\NormalTok{(best\_subset\_lm\_model,example\_1\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_1\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{])}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Example 1:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Example 1:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Input data:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Input data:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(example\_1\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_1\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   age pts reb ast round_1 round_2 undrafted age_squared pts_squared reb_squared
+## 1  22 3.9 1.5 2.4       0       1         0         484       15.21        2.25
+##   ast_squared
+## 1        5.76
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Predicted usg\_pct:"}\NormalTok{,example\_1\_prediction,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Predicted usg_pct: 0.1619788
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Actual usg\_pct:"}\NormalTok{,example\_1\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Actual usg_pct: 0.169
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_2\_DF }\OtherTok{\textless{}{-}}\NormalTok{ model\_data\_DF[}\DecValTok{500}\NormalTok{,]}
+\NormalTok{example\_2\_prediction }\OtherTok{\textless{}{-}} 
+  \FunctionTok{predict}\NormalTok{(best\_subset\_lm\_model,example\_2\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_1\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{])}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Example 2:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Example 2:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Input data:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Input data:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(example\_2\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_1\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     age  pts reb ast round_1 round_2 undrafted age_squared pts_squared
+## 500  35 16.1 8.4   1       1       0         0        1225      259.21
+##     reb_squared ast_squared
+## 500       70.56           1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Predicted usg\_pct:"}\NormalTok{,example\_2\_prediction,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Predicted usg_pct: 0.2181659
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Actual usg\_pct:"}\NormalTok{,example\_2\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Actual usg_pct: 0.244
+\end{verbatim}
+
+At seen above, the combination of the linear model with the best subset
+appears to somewhat accurately predict the usage rate.
+
+Next, the input data is centered and standardized before applying
+principal component analysis. The resulting data is then analyzed and
+visualized to see whether a linear model with fewer dimensions could
+accurately predict usage rates.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_input\_data\_PCA }\OtherTok{\textless{}{-}} \FunctionTok{prcomp}\NormalTok{(model\_input\_data\_DF,}\AttributeTok{center =} \ConstantTok{TRUE}\NormalTok{,}\AttributeTok{scale =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{model\_input\_data\_PCA\_weights }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_PCA}\SpecialCharTok{$}\NormalTok{rotation}
+\NormalTok{model\_input\_data\_PCA\_center }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_PCA}\SpecialCharTok{$}\NormalTok{center}
+\NormalTok{model\_input\_data\_PCA\_scale }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_PCA}\SpecialCharTok{$}\NormalTok{scale}
+
+\NormalTok{model\_input\_data\_PCA\_SUMMARY }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(model\_input\_data\_PCA)}
+
+\FunctionTok{print}\NormalTok{(model\_input\_data\_PCA\_SUMMARY)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Importance of components:
+##                           PC1    PC2    PC3    PC4    PC5     PC6     PC7
+## Standard deviation     2.0230 1.4185 1.2783 1.1712 1.0964 0.72232 0.29557
+## Proportion of Variance 0.3721 0.1829 0.1486 0.1247 0.1093 0.04743 0.00794
+## Cumulative Proportion  0.3721 0.5550 0.7035 0.8283 0.9375 0.98497 0.99291
+##                            PC8     PC9    PC10      PC11
+## Standard deviation     0.22996 0.14522 0.06341 4.732e-15
+## Proportion of Variance 0.00481 0.00192 0.00037 0.000e+00
+## Cumulative Proportion  0.99772 0.99963 1.00000 1.000e+00
+\end{verbatim}
+
+As expected, the initial principal components account for the majority
+of the variance present in the dataset, with each subsequent component
+making a diminishing contribution. The choice of how many principal
+components to retain can vary depending on the application, often
+determined by a selected cumulative variance threshold. In this case, a
+threshold of 0.95 is chosen as model complexity is not an issue.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{variance\_threshold }\OtherTok{\textless{}{-}} \FloatTok{0.95}
+\NormalTok{cumulative\_variance\_list }\OtherTok{\textless{}{-}}\NormalTok{ model\_input\_data\_PCA\_SUMMARY}\SpecialCharTok{$}\NormalTok{importance[}\StringTok{"Cumulative Proportion"}\NormalTok{,]}
+\NormalTok{PCA\_num\_components }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(cumulative\_variance\_list }\SpecialCharTok{\textgreater{}=}\NormalTok{ variance\_threshold)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{PCA\_variables\_used }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(model\_input\_data\_PCA}\SpecialCharTok{$}\NormalTok{x[,}\DecValTok{1}\SpecialCharTok{:}\NormalTok{PCA\_num\_components])}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"PCA variables used (threshold = "}\NormalTok{,variance\_threshold,}\StringTok{"):"}\NormalTok{,}\AttributeTok{sep=}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## PCA variables used (threshold = 0.95):
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(PCA\_variables\_used,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## PC1 PC2 PC3 PC4 PC5 PC6
+\end{verbatim}
+
+In this case, selecting the first six principal components meets the
+threshold of explaining at least 95\% of the variance captured in the
+dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_PCA\_input\_data\_DF }\OtherTok{\textless{}{-}} 
+  \FunctionTok{as.data.frame}\NormalTok{(model\_input\_data\_PCA}\SpecialCharTok{$}\NormalTok{x[,}\DecValTok{1}\SpecialCharTok{:}\NormalTok{PCA\_num\_components])}
+\NormalTok{model\_PCA\_data\_DF }\OtherTok{\textless{}{-}}\NormalTok{ model\_PCA\_input\_data\_DF}
+\NormalTok{model\_PCA\_data\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct }\OtherTok{\textless{}{-}}\NormalTok{ all\_seasons\_modified\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct}
+
+\NormalTok{model\_PCA\_data\_lm\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(usg\_pct }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ model\_PCA\_data\_DF)}
+\NormalTok{model\_PCA\_data\_model\_summary }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(model\_PCA\_data\_lm\_model)}
+\FunctionTok{print}\NormalTok{(model\_PCA\_data\_model\_summary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = usg_pct ~ ., data = model_PCA_data_DF)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.16162 -0.02383 -0.00299  0.01985  0.84595 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  0.1846408  0.0003473 531.717   <2e-16 ***
+## PC1          0.0140294  0.0001717  81.730   <2e-16 ***
+## PC2         -0.0060738  0.0002448 -24.809   <2e-16 ***
+## PC3         -0.0068445  0.0002717 -25.196   <2e-16 ***
+## PC4          0.0003293  0.0002965   1.111    0.267    
+## PC5          0.0003670  0.0003167   1.159    0.247    
+## PC6          0.0263530  0.0004808  54.815   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.03935 on 12837 degrees of freedom
+## Multiple R-squared:   0.46,  Adjusted R-squared:  0.4598 
+## F-statistic:  1823 on 6 and 12837 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+In this case, the residual values vary from -0.16162 to 0.84595, once
+again implying variability in the model's accuracy for various
+observations. The median residual is -0.00299. The linear regression
+model coefficients are shown in the Estimate column. The p values within
+the Pr(\textgreater\textbar t\textbar) column indicate that all
+coefficients for the first four, as well as the sixth principal
+components are statistically significant. The p-value associated with
+the F-statistic of 1823 indicates that the model's variables as a whole
+describe the variance of modern\_draft\_round beyond random variance. In
+other words, the adjusted R-squared value of 0.4598 implies that roughly
+45.98\% of the variance of usg\_pct is explained.
+
+Since the magnitude of the median residual value is higher, and the
+adjusted R-squared value is lower for the PCA and linear model
+combination, this suggests that the best subsets and linear regression
+model combination is better.
+
+Now let's examine the predicted outcomes of two examples:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_1\_DF }\OtherTok{\textless{}{-}}\NormalTok{ model\_data\_DF[}\DecValTok{1}\NormalTok{,]}
+\NormalTok{example\_1\_scaled\_DF }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(example\_1\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_1\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{],}
+            \AttributeTok{center =}\NormalTok{ model\_input\_data\_PCA\_center,}\AttributeTok{scale =}\NormalTok{ model\_input\_data\_PCA\_scale)}
+\NormalTok{example\_1\_PCA\_DF }\OtherTok{\textless{}{-}} 
+  \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(model\_input\_data\_PCA\_weights}\SpecialCharTok{\%*\%}\FunctionTok{t}\NormalTok{(example\_1\_scaled\_DF)))}
+\FunctionTok{colnames}\NormalTok{(example\_1\_PCA\_DF) }\OtherTok{\textless{}{-}}\NormalTok{ PCA\_variables\_used}
+\NormalTok{example\_1\_prediction }\OtherTok{\textless{}{-}}
+  \FunctionTok{predict}\NormalTok{(model\_PCA\_data\_lm\_model,example\_1\_PCA\_DF[,}\DecValTok{1}\SpecialCharTok{:}\NormalTok{PCA\_num\_components])}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Example 1:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Example 1:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Input data:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Input data:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(example\_1\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_1\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   age pts reb ast round_1 round_2 undrafted age_squared pts_squared reb_squared
+## 1  22 3.9 1.5 2.4       0       1         0         484       15.21        2.25
+##   ast_squared
+## 1        5.76
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Predicted usg\_pct:"}\NormalTok{,example\_1\_prediction,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Predicted usg_pct: 0.2057146
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Actual usg\_pct:"}\NormalTok{,example\_1\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Actual usg_pct: 0.169
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_2\_DF }\OtherTok{\textless{}{-}}\NormalTok{ model\_data\_DF[}\DecValTok{500}\NormalTok{,]}
+\NormalTok{example\_2\_scaled\_DF }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(example\_2\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_2\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{],}
+            \AttributeTok{center =}\NormalTok{ model\_input\_data\_PCA\_center,}\AttributeTok{scale =}\NormalTok{ model\_input\_data\_PCA\_scale)}
+\NormalTok{example\_2\_PCA\_DF }\OtherTok{\textless{}{-}} 
+    \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(model\_input\_data\_PCA\_weights}\SpecialCharTok{\%*\%}\FunctionTok{t}\NormalTok{(example\_2\_scaled\_DF)))}
+\FunctionTok{colnames}\NormalTok{(example\_2\_PCA\_DF) }\OtherTok{\textless{}{-}}\NormalTok{ PCA\_variables\_used}
+\NormalTok{example\_2\_prediction }\OtherTok{\textless{}{-}}
+  \FunctionTok{predict}\NormalTok{(model\_PCA\_data\_lm\_model,example\_2\_PCA\_DF[,}\DecValTok{1}\SpecialCharTok{:}\NormalTok{PCA\_num\_components])}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Example 2:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Example 2:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Input data:"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Input data:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(example\_2\_DF[,}\SpecialCharTok{!}\FunctionTok{names}\NormalTok{(example\_2\_DF) }\SpecialCharTok{\%in\%} \StringTok{"usg\_pct"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     age  pts reb ast round_1 round_2 undrafted age_squared pts_squared
+## 500  35 16.1 8.4   1       1       0         0        1225      259.21
+##     reb_squared ast_squared
+## 500       70.56           1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Predicted usg\_pct:"}\NormalTok{,example\_2\_prediction,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Predicted usg_pct: 0.1644906
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Actual usg\_pct:"}\NormalTok{,example\_2\_DF}\SpecialCharTok{$}\NormalTok{usg\_pct,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Actual usg_pct: 0.244
+\end{verbatim}
+
+At seen above, the combination of the linear model with the principal
+component analysis techniques appear to be significantly less accurate
+at predicting the usage rate than the linear model with best subset
+regression.
+
+\vspace{2cm}
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  \textbf{OPTIONAL: PICK 2 OF 4} Discuss briefly the steps you would
+  take to make sure your analysis is reproducible and easy to evaluate
+  by others, even if the data is updated later.
+\end{enumerate}
+
+Several steps would be taken to ensure that the analysis would be
+reproducible and easy to evaluate by others. Firstly, extensive
+automation of the code would be prioritized. Key aspects of the analysis
+would be encapsulated into user-friendly functions, such as dataset
+creation, generating ggpairs plots, and constructing classification
+trees. These functions would only consist of necessary inputs, like
+relative file paths for data access, loaded datasets, input/output
+variables, and important model parameters.
+
+Additionally, rigorous testing would be conducted to discover potential
+errors that could cause the program to crash. Comprehensive
+error-handling mechanisms would be integrated to quickly deal with any
+issues that arise during runtime. All programming scripts and data
+versions would be carefully documented and shared on GitHub, accompanied
+by descriptive commit messages so that users could easily follow the
+evolution of the scripts.
+
+The next step would be to make the code as interpretable as possible by
+utilizing informative variable names and adding detailed comments
+explaining key parts of the program. A README file would be created
+containing several sections. This would cover project objectives,
+installation guidelines for required packages and dependencies,
+specifics of R language versions used, and a comprehensive list of
+necessary packages with version details. It would also explain the code,
+data transformations and step-by-step instructions for running the
+analysis using the defined functions. Finally, it would outline
+guidelines for project enhancement and reporting script issues.
+
+The packages would be managed using tools like the renv package, which
+allows an R project's environment to be seamlessly saved and reproduced
+across other machines. Furthermore, an annual comprehensive report would
+be generated and shared on GitHub to identify emerging trends in
+basketball analytics. Future project expansion plans may involve
+automating analysis and report generation using task automation tools
+like Windows Task Manager.
+
+\vspace{2cm}
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  \textbf{OPTIONAL: PICK 2 OF 4} Discuss briefly any ethical concerns
+  like residual disclosure that might arise from the use of your data
+  set, possibly in combination with some additional data outside your
+  dataset.
+\end{enumerate}
+
+Working with datasets often triggers ethical concerns due to the
+potential exposure of personal information. Residual disclosure in data
+analytics occurs when sensitive details about an individual
+inadvertently surface, even when precautions are taken to protect the
+data. This typically happens when external information is linked back to
+an individual from the dataset. While this dataset primarily consists of
+player performance statistics, as it is analyzed to uncover
+relationships between variables and develop predictive models, biased
+expectations regarding a player's career trajectory could emerge. For
+instance, a talented but shorter player might be overlooked due to the
+statistical advantages generally attributed to taller players, such as
+scoring and rebounding. The same bias is often seen in undrafted players
+in comparison to lottery picks or first-round players.
+
+Take the case of Fred VanVleet, an NBA player initially passed over by
+several teams due to his relatively short stature of 6 feet. Despite
+being undrafted, VanVleet excelled with the Toronto Raptors, setting
+franchise records, becoming an all-star and NBA champion, and signing
+the most expensive deal for an undrafted player in NBA history.
+
+This being said, external data sources could still easily be intertwined
+with performance data, potentially exposing private information players
+prefer to keep confidential. For example, a decline in performance might
+spark unwarranted speculation about a player's health or personal
+issues, especially when such information is readily accessible on social
+media. Consent issues could also arise when collecting data on players
+as they may not be aware of the use of their statistics (i.e.~physical
+or performance traits) within data analysis or predictive modelling.
+
+Also, the data from certain players may cause the general public or
+social media outlets to misjudge players, as many casual fans pay
+attention to the measurable stats, without considering a player's impact
+beyond the stat sheet (i.e.~energy, effort, leadership). This could
+cause certain players to feel self-conscious and could even cause
+disparities in salaries.
+
+Finally, there could be inaccuracies in player data, which could skew
+perceptions of their potential or style of play. This could even impact
+the opposing team's strategies and lineup, or affect teams' integrities.
+A good example is Kevin Durant, who has been listed as 6'9 or 6'10
+throughout his career until several people realized that he appeared to
+be closer to 7 feet.
+
+\end{document}
